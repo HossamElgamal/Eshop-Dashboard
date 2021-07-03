@@ -1,0 +1,40 @@
+<div class="login-register">
+    <div class="login-register-panal">
+        <div class="p-grid">
+            <div class="p-col-6">
+                <img src="assets/images/login.png" alt="" />
+            </div>
+            <div class="p-col-6 p-p-5">
+                <h3>welcome !</h3>
+                <h2>Login Page</h2>
+                <form [formGroup]="loginFormGroup">
+                    <div class="p-grid" style="margin: 70px 0px">
+                        <div class="p-col-12">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon"><em class="pi pi-user"></em></span>
+                                <input formControlName="email" type="email" pInputText placeholder="Email" />
+                            </div>
+                            <small *ngIf="loginForm.email.invalid && isSubmitted" class="p-error">
+                                <span *ngIf="loginForm.email.errors.required">email is required</span>
+                                <span *ngIf="loginForm.email.errors.email">email is invalid </span>
+                            </small>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon"><em class="pi pi-lock"></em></span>
+                                <input formControlName="password" type="password" pInputText placeholder="password" />
+                            </div>
+                            <small *ngIf="loginForm.password.invalid && isSubmitted" class="p-error">password is required</small>
+                        </div>
+                        <div class="p-col-12">
+                            <p-button label="Login" styleClass="full-btn" (onClick)="onLogin()"></p-button>
+                        </div>
+                        <div class="p-col-12" *ngIf="isSubmitted && authError">
+                            <small class="p-error">{{ authMessage }} </small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
